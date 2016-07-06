@@ -1,0 +1,96 @@
+<!-- Page Content -->
+ <!-- Page Content -->
+ <div class="container freelancer-list">
+
+     <!-- Page Heading/Breadcrumbs -->
+     <div class="row">
+       <div class="col-lg-12">
+           <h1 class="page-header">Freelancer
+               <small></small>
+           </h1>
+           <ol class="breadcrumb">
+               <li><a href="/">Home</a>
+               </li>
+               <li class="active">Freelaners</li>
+           </ol>
+       </div>
+     </div>
+     <?php
+
+        foreach($this->users as $user){
+          $skills="<ul>";
+          foreach ($user["skills"] as $skill) {
+            $skills .="<li>$skill</li>";
+          }
+          $skills .="</ul>";
+
+          if($user["id"]%2 != 0)
+              echo "<div class=\"row\">";
+
+
+          ?>
+          <div class="col-sm-6 user-thumb thumbs">
+            <a href="/profile?id=<?php echo $user["id"]; ?>">
+              <div class="col-md-3 col-md-offset-3">
+                <img class="img-responsive" src="/thumbs/user-thumbs/users-img (<?php echo $user["id"]; ?>).png"  alt="">
+              </div>
+              <div class="col-md-6">
+                <h3><?php echo $user["name"]; ?></h3>
+                <?php echo $skills; ?>
+              </div>
+            </a>
+          </div>
+      <?php
+          if($user["id"]%2 == 0)
+              echo "</div>";
+
+        }
+      ?>
+
+      <button class="btn btn-info center-block load_more col-sm-12" type="button" name="button">Load More</button>
+
+     </div>
+
+
+
+
+<!-- /.container -->
+<script type="text/javascript">
+
+  $(".load_more").click(function(){
+    $(this).remove();
+
+    $.ajax({
+      url:"/freelancers/response",
+      data:{min:7,max:16},
+      type:"GET",
+      success: function(resp){
+        var users = resp.users;
+
+        //console.log(users);
+        $.each(users,function(i,user){
+
+          var skills ="<ul>";
+          for(var j=0;j<user.skills.length;j++){
+            skills +="<li>"+user.skills[j]+"</li>";
+          }
+          skills +="</ul>";
+          //console.log(skills);
+          if(i%2 == 0){
+              $(".freelancer-list").append("<div class=\"row row-"+i/2+"\"><div class=\"col-sm-6  user-thumb thumbs\"><a href=\"/profile?id="+user.id+"\"><div class=\"col-md-3 col-md-offset-3\"><img class=\"img-responsive\" src=\"/thumbs/user-thumbs/users-img ("+user.id+").png\"  alt=\"\"></div> <div class=\"col-md-6\"> <h3>"+user.name+"</h3>"+skills+"</div></a></div></div>");
+          }
+          else{
+            $(".row-"+(i/2-0.5)).append("<div class=\"col-sm-6  user-thumb thumbs\"><a href=\"/profile?id="+user.id+"\"><div class=\"col-md-3 col-md-offset-3\"><img class=\"img-responsive \" src=\"/thumbs/user-thumbs/users-img ("+user.id+").png\"  alt=\"\"></div> <div class=\"col-md-6\"> <h3>"+user.name+"</h3>"+skills+"</div></a></div>");
+
+          }
+
+        });
+
+      },
+    });
+
+
+  });
+
+
+</script>

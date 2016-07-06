@@ -1,0 +1,84 @@
+<!-- Header Carousel -->
+  <header id="myCarousel" class="carousel slide">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="fill" style="background-image:url('moodboard/coffee-1276776.jpg');"></div>
+              <div class="carousel-caption">
+                      <h2>Hire freelancers for your online job today...<'?'> </h2>
+
+
+
+
+              </div>
+          </div>
+          <div class="item">
+              <div class="fill" style="background-image:url('moodboard/technology-792180.jpg');"></div>
+              <div class="carousel-caption">
+                   <h2>
+                      <a href="/freelancers"><button class="button button1">Get Started</button></a>
+                 </h2>
+              </div>
+          </div>
+          <div class="item">
+              <div class="fill" style="background-image:url('moodboard/tablet-1128142.jpg');"></div>
+              <div class="carousel-caption">
+                  <h2>
+                      <a href="/sign-up"><button class="button button2">Log in</button></a>
+                  </h2>
+
+              </div>
+          </div>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="icon-next"></span>
+      </a>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+      <!-- Portfolio Section -->
+      <div class="row">
+          <div class="col-lg-12">
+              <h2 class="page-header">Freelancers</h2>
+          </div>
+
+        <?php
+            foreach ($this->id as $id) {
+              echo "<div class=\"col-md-4 col-sm-6\">
+                        <a href=\"profile?id=$id\">
+                            <img class=\"thumbs img-responsive img-portfolio img-hover\" src=\"/thumbs/user-thumbs/users-img ($id).png\">
+                        </a>
+                    </div>";
+            }
+        ?>
+        </div>
+        <!-- end row -->
+      <hr>
+
+      <!-- Call to Action Section -->
+      <div class="well">
+          <div class="row">
+              <div class="col-md-8">
+                  <p>Welcome to MLGB Freelancer website!<br>
+                      Millions of small businesses use MLGB Freelancer to turn their ideas into reality!</p>
+              </div>
+              <div class="col-md-4">
+                  <a class="btn btn-lg btn-default btn-block" href="#">Top</a>
+              </div>
+          </div>
+      </div>
+
+      <hr>

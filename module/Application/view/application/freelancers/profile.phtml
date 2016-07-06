@@ -1,0 +1,59 @@
+<!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Freelancers
+                    <small></small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a>
+                    </li>
+                    <li class="active">William E. Garner</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-4">
+
+                  <img class="img-responsive" src="/full/users/users_img (<?php echo $this->id; ?>).png" alt="" />
+
+            </div>
+
+            <div class="col-md-8 profile-header">
+                <h3><b><?php echo $this->name; ?></b></h3>
+                <hr>
+                <h4>Contact</h4>
+                <a href="mailto:<?php echo $this->email; ?>"><?php echo $this->email; ?></a>
+                <hr>
+                <h4>Skills</h4>
+                <?php
+                    echo "<ul class=\"skills\">";
+                    foreach($this->skills as $skill){
+                      echo "<li>$skill</li>";
+                    }
+                    echo "</ul>";
+                  ?>
+                <div class="clear"></div>
+                <hr>
+                <h4>Desciption</h4>
+                <?php
+
+                    $dir = $_SERVER['DOCUMENT_ROOT']."/description/users ($this->id).txt";
+
+                    $fp=file($dir);
+
+                    echo $fp[0];
+
+                 ?>
+           </div>
+        </div>
+        <!-- /.row -->
+
+
+        <hr>
