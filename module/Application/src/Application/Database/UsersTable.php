@@ -16,9 +16,9 @@ class UsersTable{
 
     $this->adapter = new Adapter(array(
 
-      "driver"    => "mysqli",
-      "hostname"  => "localhost",
-      "port"      => "3306",
+      "driver"    => "Pdo_Mysql",
+      "hostname"  => "127.0.0.1",
+      "port"      => "8889",
       "username"  => $username,
       "password"  => $password,
       "database"  => $database,
